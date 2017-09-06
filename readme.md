@@ -7,7 +7,9 @@ The SDK takes location data as input and renders it on a Google Maps view. Furth
 * Handle multiple simultaneous trips on the map maintaining separate markers and polylines
 * Smooth animation for user marker on data update
 * Customizations with full access and control over map object
- 
+
+![Default Tracking Experience](default-tracking-experience.png)
+
 ### Installation
 
 ***npm***
@@ -35,7 +37,7 @@ Add ‘dist/track.js’ as a script tag between <head> and </head> of your html.
 
 ### Usage
 The SDK exposes a global variable ht with the trackByData method. Call this method with the `TrackingData` object(s) to instantiate the class and render location data on the map. Furthermore, pass the `TrackingDataOptions` object to specify the map container, callbacks and customizations.
-New location data for the trip(s) is passed on to the `track()` method in a similar format. Pass the data to the instantiated class with the id for which you wish to update the tracking experience and animate the marker to its new location.
+New location data for the trip(s) is passed on to the `track()` method in a similar format. Pass the data to the instantiated class with the id for which you wish to update the tracking experience and animate the marker to its new location. `TrackingData` uses [time aware polyline](https://docs.hypertrack.com/gettingstarted/route.html#time-aware-polyline) for animation.
 
 ```js
 var ht = require('ht-webtracking-sdk');
@@ -53,6 +55,8 @@ var trackedData = ht.trackByData([{
 ```
 
 ### Customization
+
+![Custom Tracking Experience](custom-tracking-experience.png)
 
 The SDK follows a default color scheme with its own custom icons and map polyline color. You may pass custom base64 images and polyline options through MapOptions within TrackingOptions to override these defaults. The SDK also exposes the map object via callbacks for full control and access of the tracking experience to the developer. For example, use this to customize the user marker
 ```js
